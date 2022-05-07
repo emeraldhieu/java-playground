@@ -12,7 +12,7 @@ public class RomanToDecimalConverter {
          * Of course, I can use LinkedHashMap to do that, but it's not a good solution.
          * I'd prefer using a named class {@link BasicNumber}.
          */
-        var list = List.of(
+        List<BasicNumber> list = Arrays.asList(
             new BasicNumber("I", 1),
             new BasicNumber("V", 5),
             new BasicNumber("X", 10),
@@ -22,11 +22,11 @@ public class RomanToDecimalConverter {
             new BasicNumber("M", 1000)
         );
 
-        var letters = Arrays.asList(romanNumber.split(""));
+        List<String> letters = Arrays.asList(romanNumber.split(""));
 
-        var resultNumber = 0;
+        int resultNumber = 0;
 
-        var previousLetter = "";
+        String previousLetter = "";
         for (int i = 0; i < letters.size(); ++i) {
             String letter = letters.get(i);
             int number = getNumber(list, letter);
