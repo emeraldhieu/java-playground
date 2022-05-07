@@ -1,4 +1,4 @@
-package com.emeraldhieu.algorithm;
+package com.emeraldhieu.driver;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.emeraldhieu.interview;
+package com.emeraldhieu.romannumber;
 
 public class BasicNumber {
     private final String romanNumber;

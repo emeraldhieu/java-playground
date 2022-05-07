@@ -1,4 +1,4 @@
-package com.emeraldhieu.hackerrank.hackerrank;
+package com.emeraldhieu.hackerrank;
 
 import com.emeraldhieu.hackerrank.LexicographicalSubstring;
 import org.junit.jupiter.api.Test;
