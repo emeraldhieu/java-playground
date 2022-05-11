@@ -3,6 +3,7 @@ package com.emeraldhieu.banking;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -16,7 +17,7 @@ public class Bank implements BankInterface {
     private AtomicLong number = new AtomicLong(1);
 
     public Bank() {
-        accounts = Collections.synchronizedMap(new LinkedHashMap());
+        accounts = new ConcurrentHashMap<>();
     }
 
     private Account getAccount(Long accountNumber) {
@@ -24,19 +25,17 @@ public class Bank implements BankInterface {
         return account;
     }
 
-    public synchronized Long openCommercialAccount(Company company, int pin, double startingDeposit) {
-        long accountNumber = number.longValue();
+    public Long openCommercialAccount(Company company, int pin, double startingDeposit) {
+        long accountNumber = number.getAndIncrement();
         CommercialAccount account = new CommercialAccount(company, accountNumber, pin, startingDeposit);
         accounts.put(accountNumber, account);
-        number.incrementAndGet();
         return accountNumber;
     }
 
-    public synchronized Long openConsumerAccount(Person person, int pin, double startingDeposit) {
-        long accountNumber = number.longValue();
+    public Long openConsumerAccount(Person person, int pin, double startingDeposit) {
+        long accountNumber = number.getAndIncrement();
         ConsumerAccount consumerAccount = new ConsumerAccount(person, accountNumber, pin, startingDeposit);
         accounts.put(accountNumber, consumerAccount);
-        number.incrementAndGet();
         return accountNumber;
     }
 
