@@ -4,15 +4,15 @@ import java.util.*;
 
 class DefaultCardTypeCache implements CardTypeCache {
 
-    private final NavigableMap<String, BinRange> map = new TreeMap<>();
-    private final NavigableMap<String, BinRange> map2 = new TreeMap<>();
-    private final Map<String, String> map3 = new HashMap<>();
+    private final NavigableMap<Long, BinRange> map = new TreeMap<>();
+    private final NavigableMap<Long, BinRange> map2 = new TreeMap<>();
+    private final Map<Long, Long> map3 = new HashMap<>();
 
     public DefaultCardTypeCache(List<BinRange> binRanges) {
         binRanges.stream().forEach(binRange -> {
-            map.put(binRange.start, binRange);
-            map2.put(binRange.end, binRange);
-            map3.put(binRange.start, binRange.end);
+            map.put(Long.parseLong(binRange.start), binRange);
+            map2.put(Long.parseLong(binRange.end), binRange);
+            map3.put(Long.parseLong(binRange.start), Long.parseLong(binRange.end));
         });
     }
 
@@ -20,7 +20,7 @@ class DefaultCardTypeCache implements CardTypeCache {
     public String get(String cardNumber) {
         String binToCheck = cardNumber.substring(0, 12);
 
-        String floorKey = map.floorKey(binToCheck);
+        Long floorKey = map.floorKey(Long.parseLong(binToCheck));
         if (floorKey == null) {
             return null;
         }
@@ -28,7 +28,7 @@ class DefaultCardTypeCache implements CardTypeCache {
             return null;
         }
 
-        String ceilingKey = map2.ceilingKey(binToCheck);
+        Long ceilingKey = map2.ceilingKey(Long.parseLong(binToCheck));
         if (ceilingKey == null) {
             return null;
         }
