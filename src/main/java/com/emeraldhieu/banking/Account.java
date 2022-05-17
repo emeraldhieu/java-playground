@@ -44,12 +44,12 @@ public abstract class Account implements AccountInterface {
     }
 
     @Override
-    public void creditAccount(double amount) {
+    public synchronized void creditAccount(double amount) {
         balance += amount;
     }
 
     @Override
-    public boolean debitAccount(double amount) {
+    public synchronized boolean debitAccount(double amount) {
         if (balance - amount < 0) {
             return false;
         }

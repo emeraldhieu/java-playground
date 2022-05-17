@@ -1,7 +1,5 @@
 package com.emeraldhieu.banking;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -11,9 +9,9 @@ import java.util.concurrent.atomic.AtomicLong;
  * {@link #accounts}: List&lt;Long, Account&gt;
  */
 public class Bank implements BankInterface {
+
     private Map<Long, Account> accounts;
 
-    // Just an incremental number.
     private AtomicLong number = new AtomicLong(1);
 
     public Bank() {
@@ -53,7 +51,7 @@ public class Bank implements BankInterface {
         throw new IllegalArgumentException("Account not found");
     }
 
-    public synchronized void credit(Long accountNumber, double amount) {
+    public void credit(Long accountNumber, double amount) {
         if (accounts.containsKey(accountNumber)) {
             accounts.get(accountNumber).creditAccount(amount);
             return;
@@ -61,7 +59,7 @@ public class Bank implements BankInterface {
         throw new IllegalArgumentException("Account not found");
     }
 
-    public synchronized boolean debit(Long accountNumber, double amount) {
+    public boolean debit(Long accountNumber, double amount) {
         if (accounts.containsKey(accountNumber)) {
             return accounts.get(accountNumber).debitAccount(amount);
         }
