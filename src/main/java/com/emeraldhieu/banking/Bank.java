@@ -10,9 +10,9 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class Bank implements BankInterface {
 
-    private Map<Long, Account> accounts;
+    private final Map<Long, Account> accounts;
 
-    private AtomicLong number = new AtomicLong(1);
+    private final AtomicLong number = new AtomicLong(1);
 
     public Bank() {
         accounts = new ConcurrentHashMap<>();
