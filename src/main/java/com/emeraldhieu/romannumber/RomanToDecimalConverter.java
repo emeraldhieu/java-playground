@@ -21,8 +21,7 @@ public class RomanToDecimalConverter {
         int resultNumber = 0;
         String previousLetter = "";
 
-        for (int i = 0; i < letters.size(); ++i) {
-            String letter = letters.get(i);
+        for (String letter : letters) {
             int number = decimalNumbersByRomanLetter.get(letter);
 
             resultNumber += number;
