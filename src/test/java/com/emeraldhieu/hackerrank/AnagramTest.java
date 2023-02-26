@@ -1,6 +1,5 @@
 package com.emeraldhieu.hackerrank;
 
-import com.emeraldhieu.hackerrank.Anagram;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -17,18 +17,35 @@ public class Anagram {
         this.string = string;
     }
 
+    /**
+     * @deprecated because String#split is slow.
+     */
+    @Deprecated
+    public boolean isAnagramDeprecated(String stringToCheck) {
+        List<String> sortedCharactersOfString = getSortedCharacters(string);
+        List<String> sortedCharactersOfStringToCheck = getSortedCharacters(stringToCheck);
+        return sortedCharactersOfString.equals(sortedCharactersOfStringToCheck);
+    }
+
+    private List<String> getSortedCharacters(String str) {
+        return Arrays.asList(str.split("")).stream()
+            .map(String::toLowerCase)
+            .sorted()
+            .collect(Collectors.toList());
+    }
+
     public boolean isAnagram(String stringToCheck) {
-        List<String> sortedTokens = Arrays.asList(string.split("")).stream()
-            .map(String::toLowerCase)
-            .sorted()
-            .collect(Collectors.toList());
+        String sortedString = getStringWithSortedCharacters(string);
+        String sortedStringToCheck = getStringWithSortedCharacters(stringToCheck);
+        return sortedString.equals(sortedStringToCheck);
+    }
 
-        List<String> sortedTokensToCheck = Arrays.asList(stringToCheck.split("")).stream()
-            .map(String::toLowerCase)
+    private String getStringWithSortedCharacters(String str) {
+        int[] cookedCodepoints = str.codePoints()
+            .map(Character::toLowerCase)
             .sorted()
-            .collect(Collectors.toList());
-
-        return sortedTokens.equals(sortedTokensToCheck);
+            .toArray();
+        return new String(cookedCodepoints, 0, cookedCodepoints.length);
     }
 
     /*
