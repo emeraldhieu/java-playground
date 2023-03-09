@@ -2,7 +2,6 @@ package com.emeraldhieu.recursion;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,10 +15,9 @@ class PasswordCrackerTest {
         // GIVEN
         List<String> passwords = List.of("abra", "ka", "dabra");
         String loginAttempt = "abrakadabra";
-        List<String> passwordFootprints = new ArrayList<>();
 
         // WHEN
-        String crackedPassword = passwordCracker.crack(passwords, loginAttempt, passwordFootprints);
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
 
         // THEN
         assertEquals("abra ka dabra", crackedPassword);
@@ -30,11 +28,9 @@ class PasswordCrackerTest {
         // GIVEN
         List<String> passwords = List.of("abra", "ka", "dabra");
         String loginAttempt = "kaabra";
-        PasswordCracker passwordCracker = new PasswordCracker();
-        List<String> passwordFootprints = new ArrayList<>();
 
         // WHEN
-        String crackedPassword = passwordCracker.crack(passwords, loginAttempt, passwordFootprints);
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
 
         // THEN
         assertEquals("ka abra", crackedPassword);
@@ -45,10 +41,9 @@ class PasswordCrackerTest {
         // GIVEN
         List<String> passwords = List.of("ab", "ba");
         String loginAttempt = "aba";
-        List<String> passwordFootprints = new ArrayList<>();
 
         // WHEN
-        String crackedPassword = passwordCracker.crack(passwords, loginAttempt, passwordFootprints);
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
 
         // THEN
         assertEquals("WRONG PASSWORD", crackedPassword);
@@ -59,12 +54,63 @@ class PasswordCrackerTest {
         // GIVEN
         List<String> passwords = List.of("because", "can", "do", "must", "we", "what");
         String loginAttempt = "wedowhatwemustbecausewecan";
-        List<String> passwordFootprints = new ArrayList<>();
 
         // WHEN
-        String crackedPassword = passwordCracker.crack(passwords, loginAttempt, passwordFootprints);
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
 
         // THEN
         assertEquals("we do what we must because we can", crackedPassword);
+    }
+
+    @Test
+    public void nktrsgtwbuzsbptzahomgtgnaoma() {
+        // GIVEN
+        List<String> passwords = List.of("zsnpgbqh", "bktrpgdwbu", "qhuhzxfh", "mxrgmga", "omgtgnqomb", "dffttrwlfh");
+        String loginAttempt = "nktrsgtwbuzsbptzahomgtgnaoma";
+
+        // WHEN
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
+
+        // THEN
+        assertEquals("WRONG PASSWORD", crackedPassword);
+    }
+
+    @Test
+    public void xtbyhnmedbcmhyewjzsdgxtbyhn() {
+        // GIVEN
+        List<String> passwords = List.of("xkof", "medbc", "mhyewjzsdg", "vkuzym", "tbeqv", "xtbyhn");
+        String loginAttempt = "xtbyhnmedbcmhyewjzsdgxtbyhn";
+
+        // WHEN
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
+
+        // THEN
+        assertEquals("xtbyhn medbc mhyewjzsdg xtbyhn", crackedPassword);
+    }
+
+    @Test
+    public void sduhkkhbqlrxnmsduhsduhqyyx() {
+        // GIVEN
+        List<String> passwords = List.of("alutwfal", "kkhbqlrxnm", "qyyx", "lwdgpchwic", "rdtgzvw", "sduh");
+        String loginAttempt = "sduhkkhbqlrxnmsduhsduhqyyx";
+
+        // WHEN
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
+
+        // THEN
+        assertEquals("sduh kkhbqlrxnm sduh sduh qyyx", crackedPassword);
+    }
+
+    @Test
+    public void aaaaaaaaaaaaaaaaaaaaaaaaaaaaaab() {
+        // GIVEN
+        List<String> passwords = List.of("a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa");
+        String loginAttempt = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaab";
+
+        // WHEN
+        String crackedPassword = passwordCracker.crack(passwords, loginAttempt);
+
+        // THEN
+        assertEquals("WRONG PASSWORD", crackedPassword);
     }
 }
