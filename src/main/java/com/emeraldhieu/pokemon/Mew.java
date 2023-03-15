@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RequiredArgsConstructor
 @Getter
 public class Mew implements Pokemon {
 
-    private final Random random;
+    private final ThreadLocalRandom random;
 
     @Override
     public int getAttackerType() {

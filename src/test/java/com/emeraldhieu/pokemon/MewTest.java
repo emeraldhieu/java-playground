@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -11,12 +12,12 @@ import static org.mockito.Mockito.when;
 
 class MewTest {
 
-    private Random random;
+    private ThreadLocalRandom random;
     private Mew mew;
 
     @BeforeEach
     public void init() {
-        random = mock(Random.class);
+        random = mock(ThreadLocalRandom.class);
         mew = new Mew(random);
     }
 

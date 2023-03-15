@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,7 +14,7 @@ import static org.mockito.Mockito.when;
 
 class FightTest {
 
-    private final Random random = mock(Random.class);
+    private final ThreadLocalRandom random = mock(ThreadLocalRandom.class);
 
     private final List<Pokemon> pokemons = List.of(
         new Blastoise(),
@@ -42,7 +43,7 @@ class FightTest {
     @Test
     public void mewWithCriticalHit() {
         // GIVEN
-        Pokemon pokemon = new Mew(mock(Random.class)); // This random doesn't matter
+        Pokemon pokemon = new Mew(mock(ThreadLocalRandom.class)); // This random doesn't matter
         when(random.nextInt(10)).thenReturn(0);
 
         // WHEN
@@ -55,7 +56,7 @@ class FightTest {
     @Test
     public void mewWithoutCriticalHit() {
         // GIVEN
-        Pokemon pokemon = new Mew(mock(Random.class)); // This random doesn't matter
+        Pokemon pokemon = new Mew(mock(ThreadLocalRandom.class)); // This random doesn't matter
         when(random.nextInt(10)).thenReturn(1);
 
         // WHEN
