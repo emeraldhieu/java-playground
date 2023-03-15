@@ -66,7 +66,7 @@ public class PasswordCracker {
         for (int i = 0; i < passwords.size(); ++i) {
             String passwordToConcatenate = passwords.get(i);
             passwordFootprints.add(passwordToConcatenate);
-            System.out.println(passwordFootprints);
+            //System.out.println(passwordFootprints);
 
             String crackedPassword = crack(passwords, loginAttempt, passwordFootprints);
             String builtPasswordAgain = crackedPassword.replace(" ", "");
