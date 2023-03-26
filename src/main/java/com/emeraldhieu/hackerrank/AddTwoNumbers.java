@@ -15,6 +15,12 @@ package com.emeraldhieu.hackerrank;
  * ---
  * Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
  * Output: [8,9,9,9,0,0,0,1]
+ * ---
+ * Constraints:
+ * The number of nodes in each linked list is in the range [1, 100].
+ * 0 <= Node.val <= 9
+ * It is guaranteed that the list represents a number that does not have leading zeros.
+ * ---
  * See https://leetcode.com/problems/add-two-numbers
  */
 public class AddTwoNumbers {
