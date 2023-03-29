@@ -4,11 +4,14 @@ import java.util.List;
 
 public class BinarySearch {
 
+    /**
+     * Mind that the given list has to be ordered.
+     */
     public int search(List<Integer> numbers, int searchedNumber) {
         return search(numbers, 0, numbers.size() - 1, searchedNumber);
     }
 
-    public int search(List<Integer> numbers, int leftIndex, int rightIndex, int searchedNumber) {
+    private int search(List<Integer> numbers, int leftIndex, int rightIndex, int searchedNumber) {
         if (leftIndex > rightIndex) {
             return -1;
         }
