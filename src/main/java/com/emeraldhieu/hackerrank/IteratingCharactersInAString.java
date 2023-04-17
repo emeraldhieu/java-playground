@@ -1,6 +1,6 @@
 package com.emeraldhieu.hackerrank;
 
-public class Driver {
+public class IteratingCharactersInAString {
     public static void main(String[] args) {
         String s = "something";
 
@@ -12,7 +12,7 @@ public class Driver {
             int charCount = Character.charCount(curChar);
             offset += charCount;
 
-            System.out.println((char) curChar);
+            System.out.print((char) curChar);
         }
     }
 }

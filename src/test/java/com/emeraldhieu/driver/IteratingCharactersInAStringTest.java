@@ -2,7 +2,7 @@ package com.emeraldhieu.driver;
 
 import org.junit.jupiter.api.Test;
 
-class DriverTest {
+class IteratingCharactersInAStringTest {
 
     private final Driver driver = new Driver();
 
