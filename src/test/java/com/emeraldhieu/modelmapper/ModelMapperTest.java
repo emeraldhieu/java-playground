@@ -2,7 +2,6 @@ package com.emeraldhieu.modelmapper;
 
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
 
 import java.time.LocalDate;
 
@@ -23,15 +22,13 @@ public class ModelMapperTest {
                 .build();
 
         var modelMapper = new ModelMapper();
-        modelMapper.getConfiguration()
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
 
         // Can't do because PizzaDto doesn't have a setter.
 //        modelMapper.typeMap(Pizza.class, PizzaDto.class).addMappings(mapper -> {
 //            mapper.map(src -> src.getIngredient().getExpiryDate(),
 //                    (pizzaDto, o) -> {
 //                        // PizzaDto doesn't have a setter!
+//
 //                    });
 //        });
 
